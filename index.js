@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { Client, Collection, Intents } = require('discord.js');
+const { Client, Collection, Intents, MessageEmbed } = require('discord.js');
 const { token } = require('./config.json');
 
 const statusFile = require('./assets/anime.json')
@@ -15,37 +15,30 @@ for (const file of commandFiles) {
 }
 
 function setStatus() {
-	const keys = Object.keys(statusFile)
-	const randIndex = Math.floor(Math.random() * keys.length)
-	const randKey = keys[randIndex]
-	const name = statusFile[randKey]
+	const keys = Object.keys(statusFile);
+	const randIndex = Math.floor(Math.random() * keys.length);
+	const randKey = keys[randIndex];
+	const name = statusFile[randKey];
 
-	client.user.setActivity(name, {type: 'WATCHING'})
+	client.user.setActivity(name, {type: 'WATCHING'});
 
-	console.log('Updated status to watching ' + name)
+	console.log('Updated status to watching ' + name);
 }
 
 client.once('ready', () => {
+	//deleteCommands();
 	console.log('Ready!');
 	setStatus();
-	setInterval(setStatus, 1440000)
-	// test()
-	// client.api.applications(client.user.id).guilds("882332161523462184").commands("882336595594858538").delete()
-	// client.api.applications(client.user.id).guilds("882332161523462184").commands("882336595594858539").delete()
-	// client.api.applications(client.user.id).guilds("882332161523462184").commands("882332161523462184").delete()
-	// client.api.applications(client.user.id).commands('882336595594858538').delete()
-	// client.api.applications(client.user.id).commands('commandID').delete()
-
+	setInterval(setStatus, 1440000);
+	
 });
 
-// async function test() {
-// 	const test = await client.api.applications(client.user.id).guilds('882332161523462184').commands.get()
-// 	console.log(test)
-// 	// client.api.applications(client.user.id).commands('882336595594858540').delete()
-// 	client.api.applications(client.user.id).guilds("882332161523462184").commands("882336595594858540").delete()
-// 	// client.api.applications(client.user.id).commands('882336595594858539').delete()
-// 	// client.api.applications(client.user.id).commands('882336595594858538').delete()
-// }
+async function deleteCommands() {
+	console.log('Unregistering unused commands');
+	const test = await client.api.applications(client.user.id).guilds('882332161523462184').commands.get();
+	console.log(test);
+	client.api.applications(client.user.id).guilds("882332161523462184").commands("882336595594858540").delete();
+}
 
 client.on('interactionCreate', async interaction => {
 	if (!interaction.isCommand()) return;
@@ -55,8 +48,34 @@ client.on('interactionCreate', async interaction => {
 	try {
 		await client.commands.get(commandName).execute(interaction);
 	} catch (error) {
-		console.error(error);
-		return interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+		if(error instanceof Error) {
+			if(error.message == 'Anime not found!') {
+				console.log(error.message);
+				const NotFoundEmbed = new MessageEmbed()
+					.setColor('#E94D4E')
+					.setTitle('Error')
+					.addField('Anime not found.', interaction.options.getString('title') + " is not a valid anime.")
+					.setThumbnail('https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/not_found.png')
+					.setFooter('Mayuko', 'https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/pfp.jpg')
+				return interaction.reply({ embeds: [NotFoundEmbed], ephemeral: true });
+				// return interaction.reply({content: "anime not found", ephemeral: true})
+			} else if(error.message == 'Channel not NSFW!') {
+				console.log(error.message)
+				const NSFWEmbed = new MessageEmbed()
+                	.setColor('#E94D4E')
+                	.setTitle('Error')
+                	.addField('NSFW Content', 'NSFW commands are disabled in non-NSFW channels.')
+                	.setThumbnail('https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/nsfw_error.png')
+                	.setFooter('Mayuko', 'https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/pfp.jpg')
+            	return interaction.reply({ embeds: [NSFWEmbed], ephemeral: true });
+				// return interaction.reply({content: "nsfw channel ", ephemeral: true})
+			}
+		} else {
+			console.log(error);
+			return interaction.reply({content: 'General error', ephemeral: true });
+		}
+		// console.error(error);
+		// return interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
 	}
 });
 
