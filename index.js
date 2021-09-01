@@ -28,7 +28,7 @@ function setStatus() {
 client.once('ready', () => {
 	console.log('Ready!');
 	setStatus();
-	setTimeout(setStatus, 1440000)
+	setInterval(setStatus, 1440000)
 });
 
 client.on('interactionCreate', async interaction => {
