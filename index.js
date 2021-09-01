@@ -29,7 +29,23 @@ client.once('ready', () => {
 	console.log('Ready!');
 	setStatus();
 	setInterval(setStatus, 1440000)
+	// test()
+	// client.api.applications(client.user.id).guilds("882332161523462184").commands("882336595594858538").delete()
+	// client.api.applications(client.user.id).guilds("882332161523462184").commands("882336595594858539").delete()
+	// client.api.applications(client.user.id).guilds("882332161523462184").commands("882332161523462184").delete()
+	// client.api.applications(client.user.id).commands('882336595594858538').delete()
+	// client.api.applications(client.user.id).commands('commandID').delete()
+
 });
+
+// async function test() {
+// 	const test = await client.api.applications(client.user.id).guilds('882332161523462184').commands.get()
+// 	console.log(test)
+// 	// client.api.applications(client.user.id).commands('882336595594858540').delete()
+// 	client.api.applications(client.user.id).guilds("882332161523462184").commands("882336595594858540").delete()
+// 	// client.api.applications(client.user.id).commands('882336595594858539').delete()
+// 	// client.api.applications(client.user.id).commands('882336595594858538').delete()
+// }
 
 client.on('interactionCreate', async interaction => {
 	if (!interaction.isCommand()) return;
