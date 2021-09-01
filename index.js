@@ -2,6 +2,8 @@ const fs = require('fs');
 const { Client, Collection, Intents } = require('discord.js');
 const { token } = require('./config.json');
 
+const statusFile = require('./assets/anime.json')
+
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 client.commands = new Collection();
 
@@ -12,8 +14,21 @@ for (const file of commandFiles) {
 	client.commands.set(command.data.name, command);
 }
 
+function setStatus() {
+	const keys = Object.keys(statusFile)
+	const randIndex = Math.floor(Math.random() * keys.length)
+	const randKey = keys[randIndex]
+	const name = statusFile[randKey]
+
+	client.user.setActivity(name, {type: 'WATCHING'})
+
+	console.log('Updated status to watching ' + name)
+}
+
 client.once('ready', () => {
 	console.log('Ready!');
+	setStatus();
+	setTimeout(setStatus, 1440000)
 });
 
 client.on('interactionCreate', async interaction => {
