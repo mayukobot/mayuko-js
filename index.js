@@ -58,7 +58,6 @@ client.on('interactionCreate', async interaction => {
 					.setThumbnail('https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/not_found.png')
 					.setFooter('Mayuko', 'https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/pfp.jpg')
 				return interaction.reply({ embeds: [NotFoundEmbed], ephemeral: true });
-				// return interaction.reply({content: "anime not found", ephemeral: true})
 			} else if(error.message == 'Channel not NSFW!') {
 				console.log(error.message)
 				const NSFWEmbed = new MessageEmbed()
@@ -68,7 +67,15 @@ client.on('interactionCreate', async interaction => {
                 	.setThumbnail('https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/nsfw_error.png')
                 	.setFooter('Mayuko', 'https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/pfp.jpg')
             	return interaction.reply({ embeds: [NSFWEmbed], ephemeral: true });
-				// return interaction.reply({content: "nsfw channel ", ephemeral: true})
+			} else if(error.message == 'Character not found!') {
+				console.log(error.message);
+				const NotFoundEmbed = new MessageEmbed()
+					.setColor('#E94D4E')
+					.setTitle('Error')
+					.addField('Character not found.', interaction.options.getString('name') + " is not a valid character.")
+					.setThumbnail('https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/not_found.png')
+					.setFooter('Mayuko', 'https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/pfp.jpg')
+				return interaction.reply({ embeds: [NotFoundEmbed], ephemeral: true });
 			}
 		} else {
 			console.log(error);
