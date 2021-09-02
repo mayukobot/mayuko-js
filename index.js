@@ -35,9 +35,17 @@ client.once('ready', () => {
 
 async function deleteCommands() {
 	console.log('Unregistering unused commands');
-	const test = await client.api.applications(client.user.id).guilds('882332161523462184').commands.get();
-	console.log(test);
-	client.api.applications(client.user.id).guilds("882332161523462184").commands("882336595594858540").delete();
+	const test = await client.api.applications(client.user.id).commands.get();
+	// client.api.applications(client.user.id).commands("883036238955806780").delete();
+	// client.api.applications(client.user.id).commands("882778128584417315").delete();
+	// client.api.applications(client.user.id).commands("882778128584417314").delete();
+	// client.api.applications(client.user.id).commands("882778128584417313").delete();
+	// client.api.applications(client.user.id).commands("882778128584417312").delete();
+	// client.api.applications(client.user.id).commands("882778128584417311").delete();
+	// client.api.applications(client.user.id).commands("882778128584417310").delete();
+	// client.api.applications(client.user.id).commands("882778128584417310").delete();
+	// client.api.applications(client.user.id).commands("882778128584417311").delete();
+	console.log(test)
 }
 
 client.on('interactionCreate', async interaction => {
@@ -73,6 +81,15 @@ client.on('interactionCreate', async interaction => {
 					.setColor('#E94D4E')
 					.setTitle('Error')
 					.addField('Character not found.', interaction.options.getString('name') + " is not a valid character.")
+					.setThumbnail('https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/not_found.png')
+					.setFooter('Mayuko', 'https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/pfp.jpg')
+				return interaction.reply({ embeds: [NotFoundEmbed], ephemeral: true });
+			} else if(error.message == 'osu! Player not found!') {
+				console.log(error.message);
+				const NotFoundEmbed = new MessageEmbed()
+					.setColor('#E94D4E')
+					.setTitle('Error')
+					.addField('osu! player not found.', interaction.options.getString('user') + " is not a valid player.")
 					.setThumbnail('https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/not_found.png')
 					.setFooter('Mayuko', 'https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/pfp.jpg')
 				return interaction.reply({ embeds: [NotFoundEmbed], ephemeral: true });
