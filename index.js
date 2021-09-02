@@ -35,17 +35,17 @@ client.once('ready', () => {
 
 async function deleteCommands() {
 	console.log('Unregistering unused commands');
-	const test = await client.api.applications(client.user.id).commands.get();
-	// client.api.applications(client.user.id).commands("883036238955806780").delete();
-	// client.api.applications(client.user.id).commands("882778128584417315").delete();
-	// client.api.applications(client.user.id).commands("882778128584417314").delete();
-	// client.api.applications(client.user.id).commands("882778128584417313").delete();
-	// client.api.applications(client.user.id).commands("882778128584417312").delete();
-	// client.api.applications(client.user.id).commands("882778128584417311").delete();
+	const test = await client.api.applications(client.user.id).guilds('882332161523462184').commands.get();
+	client.api.applications(client.user.id).guilds("882332161523462184").commands("882770027475009606").delete();
+	// client.api.applications(client.user.id).guilds("882332161523462184").commands("882336308075298877").delete();
+	// client.api.applications(client.user.id).guilds("882332161523462184").commands("882336595594858537").delete();
+	// client.api.applications(client.user.id).guilds("882332161523462184").commands("882336595594858541").delete();
+	// client.api.applications(client.user.id).guilds("882332161523462184").commands("882336595594858542").delete();
+	// client.api.applications(client.user.id).guilds("882332161523462184").commands("882770027475009606").delete();
 	// client.api.applications(client.user.id).commands("882778128584417310").delete();
 	// client.api.applications(client.user.id).commands("882778128584417310").delete();
 	// client.api.applications(client.user.id).commands("882778128584417311").delete();
-	console.log(test)
+	// console.log(test)
 }
 
 client.on('interactionCreate', async interaction => {
