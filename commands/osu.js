@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed, DiscordAPIError, MessageAttachment } = require('discord.js');
 const { osukey } = require('../config.json');
 const { countryCodeEmoji,} = require('country-code-emoji')
 const osu = require('node-osu-api');
@@ -19,7 +19,7 @@ module.exports = {
                 .setColor('#F06EA9')
                 .setTitle(resultUser.username + " - osu!")
                 .setURL('https://osu.ppy.sh/users/' + resultUser.id)
-                .setThumbnail('http://s.ppy.sh/a/' + resultUser.id)
+                .setThumbnail('http://a.ppy.sh/' + resultUser.id)
                 .addFields(
                     { name: 'Country',      value: countryCodeEmoji(resultUser.country),        inline: true  },
                     { name: 'Global rank',  value: "#" + resultUser.pp.worldRank,               inline: true  },
