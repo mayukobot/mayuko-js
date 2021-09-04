@@ -8,7 +8,7 @@ module.exports = {
     .setName('randsauce')
     .setDescription('Generates a random valid saucecode, and sends info about it..'),
     async execute(interaction) {
-        if(interaction.channel.nsfw || message.guild === null) {
+        if(interaction.channel.nsfw ||  || interaction.guildId === null) {
             const resultDoujin = api.randomDoujin();
             const sauceEmbed = new MessageEmbed()
                 .setColor('#F15478')
