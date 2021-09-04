@@ -25,7 +25,7 @@ module.exports = {
                 .addChoice(api.nsfw[10].description, api.nsfw[10].name)
             ),
     async execute(interaction) {
-        if(interaction.channel.nsfw || message.guild === null) {
+        if(interaction.channel.nsfw || interaction.guildId === null) {
             const selection = interaction.options.getString('category');
             const picsData = await axios.get('https://api.hori.ovh/nsfw/' + selection + '/')
 
