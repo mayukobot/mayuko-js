@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { MessageEmbed, DiscordAPIError, MessageAttachment } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const { osukey } = require('../config.json');
 const { countryCodeEmoji,} = require('country-code-emoji')
 const osu = require('node-osu-api');

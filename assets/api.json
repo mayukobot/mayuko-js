@@ -1,0 +1,59 @@
+{
+  "nsfw": [
+    {
+      "name": "ass",
+      "id": 1,
+      "description": "ass | Ass focused content."
+    },
+    {
+      "name": "ecchi",
+      "id": 2,
+      "description": "ecchi | Slightly explicit sexual content."
+    },
+    {
+      "name": "ero",
+      "id": 3,
+      "description": "ero | Any kind of erotic content."
+    },
+    {
+      "name": "hentai",
+      "id": 4,
+      "description": "hentai | Explicit sexual content."
+    },
+    {
+      "name": "maid",
+      "id": 5,
+      "description": "maid | A woman or girl employed to do domestic work."
+    },
+    {
+      "name": "milf",
+      "id": 6,
+      "description": "milf | A sexually attractive middle-aged woman."
+    },
+    {
+      "name": "oppai",
+      "id": 7,
+      "description": "oppai | Boobs focused content."
+    },
+    {
+      "name": "oral",
+      "id": 8,
+      "description": "oral | Oral sex content."
+    },
+    {
+      "name": "paizuri",
+      "id": 9,
+      "description": "paizuri | A subcategory of hentai that involves breast sex."
+    },
+    {
+      "name": "selfies",
+      "id": 10,
+      "description": "selfies | A girl taking a lewd picture of herself."
+    },
+    {
+      "name": "uniform",
+      "id": 11,
+      "description": "uniform | Girls wearing any kind of uniform."
+    }
+  ]
+}
