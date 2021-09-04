@@ -9,7 +9,7 @@ module.exports = {
     .setDescription('Display information and a thumbnail about the provided saucecode.')
     .addIntegerOption(option => option.setName('code').setDescription('Saucecode to look up').setRequired(true)),
     async execute(interaction) {
-        if(interaction.channel.nsfw) {
+        if(interaction.channel.type === "DM" || interaction.channel.nsfw) {
             const saucecode = interaction.options.getInteger('code')
             const resultDoujin = api.fetchDoujin(saucecode);
             const sauceEmbed = new MessageEmbed()

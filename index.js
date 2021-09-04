@@ -4,7 +4,7 @@ const { token } = require('./config.json');
 
 const statusFile = require('./assets/anime.json')
 
-const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+const client = new Client({ intents: [Intents.FLAGS.GUILDS],  partials: ['CHANNEL']});
 client.commands = new Collection();
 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
@@ -26,7 +26,7 @@ function setStatus() {
 }
 
 client.once('ready', () => {
-	//deleteCommands();
+	//No deleteCommands();
 	console.log('Ready!');
 	setStatus();
 	setInterval(setStatus, 1440000);

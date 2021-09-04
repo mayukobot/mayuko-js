@@ -25,7 +25,8 @@ module.exports = {
                 .addChoice(api.nsfw[10].description, api.nsfw[10].name)
             ),
     async execute(interaction) {
-        if(interaction.channel.nsfw) {
+        if(interaction.channel.type === "DM" || interaction.channel.nsfw) {
+            console.log("send")
             const selection = interaction.options.getString('category');
             const picsData = await axios.get('https://api.hori.ovh/nsfw/' + selection + '/')
 
@@ -37,7 +38,6 @@ module.exports = {
                 .setFooter("Data provided by pics.hori.ovh", "https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/pfp.jpg")
 
             return interaction.reply({embeds: [picsEmbed]})
-            // return interaction.reply(selection)
         } else {
             throw new Error("Channel not NSFW!");
         }
