@@ -23,6 +23,7 @@
     "fs": "^0.0.1-security",
     "got": "^11.8.2",
     "i": "^0.3.6",
+    "nekos-best.js": "^4.0.2",
     "nhentai": "^3.0.0",
     "node-osu-api": "^1.1.9",
     "node-truncate": "^0.1.0",
