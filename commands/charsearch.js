@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
 const anilist = require('anilist-node');
 const TurndownService = require('turndown');
 const truncate = require('node-truncate');
@@ -20,6 +20,13 @@ module.exports = {
             // console.log(result)
 
             // const markdown = turndownService.turndown(result.description)
+            const row = new MessageActionRow()
+            .addComponents(
+                new MessageButton()
+                    .setLabel('View on Anilist')
+                    .setStyle('LINK')
+                    .setURL("https://anilist.co/character/" + result.id),
+            );
 
             const charsearchEmbed = new MessageEmbed()
                 .setColor('#02A9FF')
@@ -27,10 +34,11 @@ module.exports = {
                 .setDescription(result.description.truncate(200))
                 .setImage(result.image.large)
                 .setURL("https://anilist.co/character/" + result.id)
+                .setFooter("Data provided by anilist.co", "https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/pfp.jpg")
                 .addFields(
                     { name: "Native name", value: result.name.native, inline: false }
                 )
-            return interaction.reply({ embeds: [charsearchEmbed] })
+            return interaction.reply({ embeds: [charsearchEmbed], components: [row] })
         } catch(e) { throw new Error("Character not found!"); }
     }
 }

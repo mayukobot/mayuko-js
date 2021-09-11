@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
 const ogs = require('open-graph-scraper') 
 const options = { url: 'https://mywaifulist.moe/random' };
 
@@ -10,6 +10,14 @@ module.exports = {
     async execute(interaction) {
         const tags = await ogs(options)
 
+        const row = new MessageActionRow()
+            .addComponents(
+                new MessageButton()
+                    .setLabel('View on MyWaifuList')
+                    .setStyle('LINK')
+                    .setURL(tags.result['ogUrl']),
+            );
+
         const waifuEmbed = new MessageEmbed()
             .setColor('#FFFFFF')
             .setTitle(tags.result['twitterTitle'])
@@ -17,6 +25,6 @@ module.exports = {
             .setURL(tags.result['ogUrl'])
             .setImage(tags.result['twitterImage']['url'])
             .setFooter("Data provided by mywaifulist.moe", "https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/pfp.jpg");
-        await interaction.reply({embeds: [waifuEmbed]})
+        await interaction.reply({embeds: [waifuEmbed], components: [row]})
     }
 }

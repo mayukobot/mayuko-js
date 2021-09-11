@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed, MessageActionRow, MessageButton, MessageSelectMenu } = require('discord.js');
 const anilist = require('anilist-node');
 const TurndownService = require('turndown');
 const truncate = require('node-truncate');
@@ -16,11 +16,20 @@ module.exports = {
     async execute(interaction) {
         try {
             const title = interaction.options.getString('title');
-            const search = await Anilist.search("anime", title, 1, 10)
+            const search = await Anilist.search("anime", title, 1, 5)
             const result = await Anilist.media.anime(search.media[0].id)
-            // console.log(result)
+            // console.log(search.media)
 
             const markdown = turndownService.turndown(result.description)
+
+            const row = new MessageActionRow()
+            .addComponents(
+                new MessageButton()
+                    .setLabel('View on Anilist')
+                    .setStyle('LINK')
+                    .setURL("https://anilist.co/anime/" + result.id),
+                
+            );
 
             const anisearchEmbed = new MessageEmbed()
                 .setColor('#02A9FF')
@@ -44,7 +53,7 @@ module.exports = {
                 );
             }
 
-            return interaction.reply({embeds: [anisearchEmbed]})
+            await interaction.reply({embeds: [anisearchEmbed], components: [row] })
         } catch(e) { throw new Error("Anime not found!"); }
     }
 }

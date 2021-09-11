@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
 const { osukey } = require('../config.json');
 const { countryCodeEmoji,} = require('country-code-emoji')
 const osu = require('node-osu-api');
@@ -15,6 +15,15 @@ module.exports = {
         try {
             const user = interaction.options.getString('user')
             const resultUser = await osuApi.getUser({ u: user })
+
+            const row = new MessageActionRow()
+            .addComponents(
+                new MessageButton()
+                    .setLabel('View on osu.ppy.sh')
+                    .setStyle('LINK')
+                    .setURL('https://osu.ppy.sh/users/' + resultUser.id),
+            );
+
             const osuEmbed = new MessageEmbed()
                 .setColor('#F06EA9')
                 .setTitle(resultUser.username + " - osu!")
@@ -32,7 +41,7 @@ module.exports = {
                     { name: 'A',            value: resultUser.ranks.A.toString(),               inline: true  }
                 )
                 .setFooter("Data provided by osu.ppy.sh", "https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/pfp.jpg");
-            return interaction.reply({embeds: [osuEmbed]});
+            return interaction.reply({embeds: [osuEmbed], components: [row]});
         } catch(e) { throw new Error("osu! Player not found!"); }
     }
 };

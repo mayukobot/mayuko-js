@@ -33,6 +33,12 @@ client.once('ready', () => {
 	
 });
 
+// client.on('interactionCreate', interaction => {
+// 	if(!interaction.isButton()) return;
+// 	console.log(interaction);
+// 	client.users.cache.get(interaction.user.id).send('test')
+// })
+
 async function deleteCommands() {
 	console.log('Unregistering unused commands');
 	const test = await client.api.applications(client.user.id).commands.get();
