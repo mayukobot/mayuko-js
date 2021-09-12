@@ -38,6 +38,7 @@ module.exports = {
                     { name: 'SSH',          value: resultUser.ranks.SSH.toString(),             inline: true  },
                     { name: 'SS',           value: resultUser.ranks.SS.toString(),              inline: true  },
                     { name: 'SH',           value: resultUser.ranks.SH.toString(),              inline: true  },
+                    { name: 'S',            value: resultUser.ranks.S.toString(),               inline: false },
                     { name: 'A',            value: resultUser.ranks.A.toString(),               inline: true  }
                 )
                 .setFooter("Data provided by osu.ppy.sh", "https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/pfp.jpg");
