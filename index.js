@@ -26,7 +26,7 @@ function setStatus() {
 }
 
 client.once('ready', () => {
-	//No deleteCommands();
+	//deleteCommands();
 	console.log('Ready!');
 	setStatus();
 	setInterval(setStatus, 1440000);
