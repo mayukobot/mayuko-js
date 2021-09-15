@@ -12,7 +12,7 @@ General purpose Discord bot for all things anime!
   
 ## Configuration
 
-To run this project, fill out your bot token inside `./config.json`
+To run this project, fill out your bot and osu!api token inside `./config.json`
 
   
 ## Run Locally
