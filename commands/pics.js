@@ -26,16 +26,15 @@ module.exports = {
             ),
     async execute(interaction) {
         if(interaction.channel.type === "DM" || interaction.channel.nsfw) {
-            console.log("send")
             const selection = interaction.options.getString('category');
-            const picsData = await axios.get('https://api.hori.ovh/nsfw/' + selection + '/')
+            const picsData = await axios.get('https://api.waifu.im/nsfw/' + selection + '/')
 
             const picsEmbed = new MessageEmbed()
                 .setColor('#31D2F2')
                 .setTitle('Oh my how, lewd...')
                 .setURL(picsData.data.url)
                 .setImage(picsData.data.url)
-                .setFooter("Data provided by pics.hori.ovh", "https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/pfp.jpg")
+                .setFooter("Data provided by waifu.im", "https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/pfp.jpg")
 
             return interaction.reply({embeds: [picsEmbed]})
         } else {
