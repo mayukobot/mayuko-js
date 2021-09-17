@@ -33,23 +33,23 @@ module.exports = {
             switch(mode) {
                 case 0:
                     titleString = resultUser.username + " - osu!"
-                    embedUrl = "https://os.ppy.sh/users/" + resultUser.id + "/osu"
+                    embedUrl = "https://osu.ppy.sh/users/" + resultUser.id + "/osu"
                     break;
                 case 1:
                     titleString = resultUser.username + " - osu!taiko"
-                    embedUrl = "https://os.ppy.sh/users/" + resultUser.id + "/taiko"
+                    embedUrl = "https://osu.ppy.sh/users/" + resultUser.id + "/taiko"
                     break;
                 case 2:
                     titleString = resultUser.username + " - osu!catch"
-                    embedUrl = "https://os.ppy.sh/users/" + resultUser.id + "/fruits"
+                    embedUrl = "https://osu.ppy.sh/users/" + resultUser.id + "/fruits"
                     break;
                 case 3:
                     titleString = resultUser.username + " - osu!mania"
-                    embedUrl = "https://os.ppy.sh/users/" + resultUser.id + "/mania"
+                    embedUrl = "https://osu.ppy.sh/users/" + resultUser.id + "/mania"
                     break;
                 default:
                     titleString = resultUser.username + " - osu!"
-                    embedUrl = "https://os.ppy.sh/users/" + resultUser.id + "/osu"
+                    embedUrl = "https://osu.ppy.sh/users/" + resultUser.id + "/osu"
                     break;
             }
 
