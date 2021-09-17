@@ -10,24 +10,61 @@ module.exports = {
     data: new SlashCommandBuilder()
     .setName('osu')
     .setDescription('Search for a player on osu! and display information about it.')
-    .addStringOption(option => option.setName('user').setDescription("The player to look up").setRequired(true)),
+    .addStringOption(option => option.setName('user').setDescription("The player to look up").setRequired(true))
+    .addIntegerOption(option2 =>
+            option2.setName("mode")
+                .setDescription("Game mode")
+                .setRequired(true)
+                .addChoice("osu!standard", 0)
+                .addChoice("osu!taiko", 1)
+                .addChoice("osu!catch", 2)
+                .addChoice("osu!mania", 3)
+        ),
     async execute(interaction) {
         try {
             const user = interaction.options.getString('user')
-            const resultUser = await osuApi.getUser({ u: user })
+            const mode = interaction.options.getInteger('mode')
+            const resultUser = await osuApi.getUser({ u: user, m: mode})
+
+            var titleString = ""
+            var embedUrl = ""
+
+
+            switch(mode) {
+                case 0:
+                    titleString = resultUser.username + " - osu!"
+                    embedUrl = "https://os.ppy.sh/users/" + resultUser.id + "/osu"
+                    break;
+                case 1:
+                    titleString = resultUser.username + " - osu!taiko"
+                    embedUrl = "https://os.ppy.sh/users/" + resultUser.id + "/taiko"
+                    break;
+                case 2:
+                    titleString = resultUser.username + " - osu!catch"
+                    embedUrl = "https://os.ppy.sh/users/" + resultUser.id + "/fruits"
+                    break;
+                case 3:
+                    titleString = resultUser.username + " - osu!mania"
+                    embedUrl = "https://os.ppy.sh/users/" + resultUser.id + "/mania"
+                    break;
+                default:
+                    titleString = resultUser.username + " - osu!"
+                    embedUrl = "https://os.ppy.sh/users/" + resultUser.id + "/osu"
+                    break;
+            }
 
             const row = new MessageActionRow()
             .addComponents(
                 new MessageButton()
                     .setLabel('View on osu.ppy.sh')
                     .setStyle('LINK')
-                    .setURL('https://osu.ppy.sh/users/' + resultUser.id),
+                    .setURL(embedUrl)
             );
 
             const osuEmbed = new MessageEmbed()
                 .setColor('#F06EA9')
-                .setTitle(resultUser.username + " - osu!")
-                .setURL('https://osu.ppy.sh/users/' + resultUser.id)
+                .setTitle(titleString)
+                .setURL(embedUrl)
                 .setThumbnail('http://a.ppy.sh/' + resultUser.id)
                 .addFields(
                     { name: 'Country',      value: countryCodeEmoji(resultUser.country),        inline: true  },
@@ -43,6 +80,8 @@ module.exports = {
                 )
                 .setFooter("Data provided by osu.ppy.sh", "https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/pfp.jpg");
             return interaction.reply({embeds: [osuEmbed], components: [row]});
-        } catch(e) { throw new Error("osu! Player not found!"); }
+        } catch(e) { 
+            console.log(e)
+            throw new Error("osu! Player not found!"); }
     }
 };

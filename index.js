@@ -26,7 +26,7 @@ function setStatus() {
 }
 
 client.once('ready', () => {
-	//deleteCommands();
+	// deleteCommands();
 	console.log('Ready!');
 	setStatus();
 	setInterval(setStatus, 1440000);
@@ -42,7 +42,7 @@ client.once('ready', () => {
 async function deleteCommands() {
 	console.log('Unregistering unused commands');
 	const test = await client.api.applications(client.user.id).commands.get();
-	// client.api.applications(client.user.id).commands("882770027475009606").delete();
+	// client.api.applications(client.user.id).commands("883085523638423575").delete();
 	// client.api.applications(client.user.id).commands("882778128584417310").delete();
 	// client.api.applications(client.user.id).commands("882778128584417310").delete();
 	// client.api.applications(client.user.id).commands("883552584240095242").delete();
