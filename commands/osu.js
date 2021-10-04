@@ -1,7 +1,7 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
 const { osukey } = require('../config.json');
-const { countryCodeEmoji,} = require('country-code-emoji')
+const { countryCodeEmoji } = require('country-code-emoji')
 const osu = require('node-osu-api');
 
 const osuApi = new osu.Api(osukey)
@@ -10,7 +10,11 @@ module.exports = {
     data: new SlashCommandBuilder()
     .setName('osu')
     .setDescription('Search for a player on osu! and display information about it.')
-    .addStringOption(option => option.setName('user').setDescription("The player to look up").setRequired(true))
+    .addStringOption(option => 
+        option.setName('user')
+            .setDescription("The player to look up")
+            .setRequired(true))
+
     .addIntegerOption(option2 =>
             option2.setName("mode")
                 .setDescription("Game mode")

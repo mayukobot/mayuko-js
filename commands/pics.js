@@ -29,11 +29,13 @@ module.exports = {
             const selection = interaction.options.getString('category');
             const picsData = await axios.get('https://api.waifu.im/nsfw/' + selection + '/')
 
+            // console.log(picsData.data.tags[0].images[0])
+
             const picsEmbed = new MessageEmbed()
-                .setColor('#31D2F2')
+                .setColor(picsData.data.tags[0].images[0].dominant_color)
                 .setTitle('Oh my how, lewd...')
-                .setURL(picsData.data.url)
-                .setImage(picsData.data.url)
+                .setURL(picsData.data.tags[0].images[0].url)
+                .setImage(picsData.data.tags[0].images[0].url)
                 .setFooter("Data provided by waifu.im", "https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/pfp.jpg")
 
             return interaction.reply({embeds: [picsEmbed]})
