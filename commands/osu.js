@@ -1,5 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
+const { getAverageColor } = require('fast-average-color-node')
 const { osukey } = require('../config.json');
 const { countryCodeEmoji } = require('country-code-emoji')
 const osu = require('node-osu-api');
@@ -29,6 +30,10 @@ module.exports = {
             const user = interaction.options.getString('user')
             const mode = interaction.options.getInteger('mode')
             const resultUser = await osuApi.getUser({ u: user, m: mode})
+
+            const avgColor = await getAverageColor('http://a.ppy.sh/' + resultUser.id)
+
+            console.log(resultUser)
 
             var titleString = ""
             var embedUrl = ""
@@ -66,7 +71,7 @@ module.exports = {
             );
 
             const osuEmbed = new MessageEmbed()
-                .setColor('#F06EA9')
+                .setColor(avgColor.hex)
                 .setTitle(titleString)
                 .setURL(embedUrl)
                 .setThumbnail('http://a.ppy.sh/' + resultUser.id)

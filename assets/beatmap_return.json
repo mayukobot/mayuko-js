@@ -1,0 +1,44 @@
+{
+  id: '2025942',
+  beatmapSetId: '968171',
+  hash: '7494eedd51015392985148c35c9201cd',
+  title: 'Mizuoto to Curtain',
+  creator: 'Log Off Now',
+  version: 'Lucid',
+  source: '',
+  artist: 'MIMI feat. Hatsune Miku',
+  genre: 'Pop',
+  language: 'Japanese',
+  rating: 9.18423,
+  mode: 'Standard',
+  tags: [ '佐藤主税', 'vocaloid', 'japanese' ],
+  approvalStatus: 'Ranked',
+  submit: {
+    submitDate: '2019-05-07 21:34:50',
+    approvedDate: '2019-05-18 17:40:45',
+    lastUpdate: '2019-05-08 19:29:05'
+  },
+  maxCombo: 265,
+  objects: { 
+    normal: 127, 
+    slider: 64, 
+    spinner: 1 
+  },
+  difficulty: {
+    stars: 5.89168,
+    aim_stars: 3.17147,
+    speed_star: 2.26895,
+    total_length: 54,
+    drain_length: 53,
+    bpm: 186,
+    CS: 3.8,
+    OD: 9,
+    AR: 9.3,
+    HP: 5.2
+  },
+  counts: { 
+    favourites: 5429, 
+    plays: 6712254, 
+    passes: 1370286
+  }
+}
