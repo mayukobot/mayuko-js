@@ -23,7 +23,7 @@ module.exports = {
             .setTitle(tags.result['twitterTitle'])
             .setDescription(tags.result['ogDescription'])
             .setURL(tags.result['ogUrl'])
-            .setImage(tags.result['twitterImage']['url'])
+            .setImage(tags.result['ogImage']['url'])
             .setFooter("Data provided by mywaifulist.moe", "https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/pfp.jpg");
         await interaction.reply({embeds: [waifuEmbed], components: [row]})
     }
