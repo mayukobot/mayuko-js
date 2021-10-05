@@ -29,7 +29,7 @@ module.exports = {
         try {
             const user = interaction.options.getString('user')
             const mode = interaction.options.getInteger('mode')
-            const resultUser = await osuApi.getUser({ u: user, m: mode})
+            const resultUser = await osuApi.getUser({ u: "LVBiggs", m: mode})
 
             const avgColor = await getAverageColor('http://a.ppy.sh/' + resultUser.id)
 

@@ -32,21 +32,28 @@ module.exports = {
             // tl;dr i'm just too lazy to do like, proper checking and stuff lol
             var resultMapGenre = ""
             var resultMapSource = ""
+            var resultMapLang =""
 
             // osu! client displays all difficulties at the second decimal, so we shall do the same.
             var starDifficulty = resultMap[0].difficulty.stars.toFixed(2)
 
             // Oh hey heres that meme worthy checking I spoke about above PepeLaugh
             if(resultMap[0].genre === undefined) {
-                resultMapGenre = "Not specified"
+                resultMapGenre = "Unspecified"
             } else {
                 resultMapGenre = resultMap[0].genre
             }
 
             if(resultMap[0].source === '') {
-                resultMapSource = "Not specified"
+                resultMapSource = "Unspecified"
             } else {
                 resultMapSource = resultMap[0].source
+            }
+
+            if(resultMap[0].language === undefined) {
+                resultMapLang = "Unspecified"
+            } else {
+                resultMapLang = resultMap[0].language
             }
 
             const row = new MessageActionRow()
@@ -67,7 +74,7 @@ module.exports = {
                     { name: 'Mapper',       value: resultMap[0].creator.toString(),         inline: true },
                     { name: 'Artist',       value: resultMap[0].artist.toString(),          inline: true },
                     { name: 'Diff',         value: resultMap[0].version.toString(),         inline: true },
-                    { name: 'Language',     value: resultMap[0].language.toString(),        inline: true },
+                    { name: 'Language',     value: resultMapLang.toString(),                inline: true },
                     { name: 'Genre',        value: resultMapGenre.toString(),               inline: true },
                     { name: 'Source',       value: resultMapSource.toString(),              inline: true },
                     { name: 'Status',       value: resultMap[0].approvalStatus.toString(),  inline: true },
