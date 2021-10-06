@@ -94,6 +94,15 @@ client.on('interactionCreate', async interaction => {
 					.setThumbnail('https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/not_found.png')
 					.setFooter('Mayuko', 'https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/pfp.jpg')
 				return interaction.reply({ embeds: [NotFoundEmbed], ephemeral: true });
+			} else if(error.message == 'osu! Beatmap not found!!') {
+				console.log(error.message);
+				const NotFoundEmbed = new MessageEmbed()
+					.setColor('#E94D4E')
+					.setTitle('Error')
+					.addField('osu! beatmap not found.', interaction.options.getString('beatmapid') + " is not a valid map ID.")
+					.setThumbnail('https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/not_found.png')
+					.setFooter('Mayuko', 'https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/pfp.jpg')
+				return interaction.reply({ embeds: [NotFoundEmbed], ephemeral: true });
 			}
 		} else {
 			console.log(error);
