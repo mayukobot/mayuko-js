@@ -34,7 +34,7 @@ module.exports = {
                 .setDescription(result.description.truncate(200))
                 .setImage(result.image.large)
                 .setURL("https://anilist.co/character/" + result.id)
-                .setFooter("Data provided by anilist.co", "https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/pfp.jpg")
+                .setFooter("Data provided by anilist.co", "https://raw.githubusercontent.com/mayukobot/mayuko-js/master/assets/pfp.jpg")
                 .addFields(
                     { name: "Native name", value: result.name.native, inline: false }
                 )

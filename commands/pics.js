@@ -36,7 +36,7 @@ module.exports = {
                 .setTitle('Oh my how, lewd...')
                 .setURL(picsData.data.tags[0].images[0].url)
                 .setImage(picsData.data.tags[0].images[0].url)
-                .setFooter("Data provided by waifu.im", "https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/pfp.jpg")
+                .setFooter("Data provided by waifu.im", "https://raw.githubusercontent.com/mayukobot/mayuko-js/master/assets/pfp.jpg")
 
             return interaction.reply({embeds: [picsEmbed]})
         } else {

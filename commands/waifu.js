@@ -24,7 +24,7 @@ module.exports = {
             .setDescription(tags.result['ogDescription'])
             .setURL(tags.result['ogUrl'])
             .setImage(tags.result['ogImage']['url'])
-            .setFooter("Data provided by mywaifulist.moe", "https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/pfp.jpg");
+            .setFooter("Data provided by mywaifulist.moe", "https://raw.githubusercontent.com/mayukobot/mayuko-js/master/assets/pfp.jpg");
         await interaction.reply({embeds: [waifuEmbed], components: [row]})
     }
 }

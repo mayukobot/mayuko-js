@@ -22,7 +22,7 @@ module.exports = {
                     { name: 'Pages', value: (await resultDoujin).length.toString() },
                     { name: 'Favorites', value: (await resultDoujin).favorites.toString() }
                 )
-                .setFooter("Data provided by nhentai.net", "https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/pfp.jpg");
+                .setFooter("Data provided by nhentai.net", "https://raw.githubusercontent.com/mayukobot/mayuko-js/master/assets/pfp.jpg");
             return interaction.reply({embeds: [sauceEmbed]});
         } else {
             throw new Error("Channel not NSFW!");
