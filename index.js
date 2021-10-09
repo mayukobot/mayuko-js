@@ -64,8 +64,8 @@ client.on('interactionCreate', async interaction => {
 					.setColor('#E94D4E')
 					.setTitle('Error')
 					.addField('Anime not found.', interaction.options.getString('title') + " is not a valid anime.")
-					.setThumbnail('https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/not_found.png')
-					.setFooter('Mayuko', 'https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/pfp.jpg')
+					.setThumbnail('https://raw.githubusercontent.com/mayukobot/mayuko-js/master/assets/not_found.png')
+					.setFooter('Mayuko', 'https://raw.githubusercontent.com/mayukobot/mayuko-js/master/assets/pfp.jpg')
 				return interaction.reply({ embeds: [NotFoundEmbed], ephemeral: true });
 			} else if(error.message == 'Channel not NSFW!') {
 				console.log(error.message)
@@ -73,8 +73,8 @@ client.on('interactionCreate', async interaction => {
                 	.setColor('#E94D4E')
                 	.setTitle('Error')
                 	.addField('NSFW Content', 'NSFW commands are disabled in non-NSFW channels.')
-                	.setThumbnail('https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/nsfw_error.png')
-                	.setFooter('Mayuko', 'https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/pfp.jpg')
+                	.setThumbnail('https://raw.githubusercontent.com/mayukobot/mayuko-js/master/assets/nsfw_error.png')
+                	.setFooter('Mayuko', 'https://raw.githubusercontent.com/mayukobot/mayuko-js/master/assets/pfp.jpg')
             	return interaction.reply({ embeds: [NSFWEmbed], ephemeral: true });
 			} else if(error.message == 'Character not found!') {
 				console.log(error.message);
@@ -82,8 +82,8 @@ client.on('interactionCreate', async interaction => {
 					.setColor('#E94D4E')
 					.setTitle('Error')
 					.addField('Character not found.', interaction.options.getString('name') + " is not a valid character.")
-					.setThumbnail('https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/not_found.png')
-					.setFooter('Mayuko', 'https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/pfp.jpg')
+					.setThumbnail('https://raw.githubusercontent.com/mayukobot/mayuko-js/master/assets/not_found.png')
+					.setFooter('Mayuko', 'https://raw.githubusercontent.com/mayukobot/mayuko-js/master/assets/pfp.jpg')
 				return interaction.reply({ embeds: [NotFoundEmbed], ephemeral: true });
 			} else if(error.message == 'osu! Player not found!') {
 				console.log(error.message);
@@ -91,8 +91,8 @@ client.on('interactionCreate', async interaction => {
 					.setColor('#E94D4E')
 					.setTitle('Error')
 					.addField('osu! player not found.', interaction.options.getString('user') + " is not a valid player.")
-					.setThumbnail('https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/not_found.png')
-					.setFooter('Mayuko', 'https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/pfp.jpg')
+					.setThumbnail('https://raw.githubusercontent.com/mayukobot/mayuko-js/master/assets/not_found.png')
+					.setFooter('Mayuko', 'https://raw.githubusercontent.com/mayukobot/mayuko-js/master/assets/pfp.jpg')
 				return interaction.reply({ embeds: [NotFoundEmbed], ephemeral: true });
 			} else if(error.message == 'osu! Beatmap not found!!') {
 				console.log(error.message);
@@ -100,8 +100,8 @@ client.on('interactionCreate', async interaction => {
 					.setColor('#E94D4E')
 					.setTitle('Error')
 					.addField('osu! beatmap not found.', interaction.options.getString('beatmapid') + " is not a valid map ID.")
-					.setThumbnail('https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/not_found.png')
-					.setFooter('Mayuko', 'https://raw.githubusercontent.com/mayukobot/mayuko-discord/master/assets/pfp.jpg')
+					.setThumbnail('https://raw.githubusercontent.com/mayukobot/mayuko-js/master/assets/not_found.png')
+					.setFooter('Mayuko', 'https://raw.githubusercontent.com/mayukobot/mayuko-js/master/assets/pfp.jpg')
 				return interaction.reply({ embeds: [NotFoundEmbed], ephemeral: true });
 			}
 		} else {

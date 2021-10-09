@@ -31,14 +31,27 @@ module.exports = {
             const mode = interaction.options.getInteger('mode')
             const resultUser = await osuApi.getUser({ u: user, m: mode})
 
-            const avgColor = await getAverageColor('http://a.ppy.sh/' + resultUser.id)
-
-            console.log(resultUser)
-
             var titleString = ""
             var embedUrl = ""
 
+            var colorString = "#E7649F"
+            var pfpString = 'http://a.ppy.sh/' + resultUser.id
 
+            try {
+                const avgColor = await getAverageColor('http://a.ppy.sh/' + resultUser.id)
+                pfpString = 'http://a.ppy.sh/' + resultUser.id
+                colorString = avgColor.hex
+            } catch(e) {
+                console.log("User does not have a profile picture, falling back to default color.")
+                var pfpString = 'https://a.ppy.sh/'
+                colorString = "#E7649F"
+            }
+
+            // console.log(resultUser)
+
+
+
+            
             switch(mode) {
                 case 0:
                     titleString = resultUser.username + " - osu!"
@@ -71,10 +84,11 @@ module.exports = {
             );
 
             const osuEmbed = new MessageEmbed()
-                .setColor(avgColor.hex)
+                // .setColor(avgColor.hex)
+                .setColor(colorString)
                 .setTitle(titleString)
                 .setURL(embedUrl)
-                .setThumbnail('http://a.ppy.sh/' + resultUser.id)
+                .setThumbnail(pfpString)
                 .addFields(
                     { name: 'Country',      value: countryCodeEmoji(resultUser.country),        inline: true  },
                     { name: 'Global rank',  value: "#" + resultUser.pp.worldRank,               inline: true  },
