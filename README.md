@@ -20,7 +20,8 @@ To run this project, fill out your bot and osu!api token inside `./config.json`
 Clone the project
 
 ```bash
-  git clone https://github.com/MayukoBot/mayuko-js.git
+  $ git clone https://github.com/MayukoBot/mayuko-js.git
+  $ git submodule update --init --recursive
 ```
 
 Go to the project directory
