@@ -21,13 +21,13 @@ Clone the project
 
 ```bash
   $ git clone https://github.com/MayukoBot/mayuko-js.git
-  $ git submodule update --init --recursive
 ```
 
 Go to the project directory
 
 ```bash
   $ cd mayuko-js
+  $ git submodule update --init --recursive
 ```
 
 Install dependencies
