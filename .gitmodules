@@ -1,0 +1,3 @@
+[submodule "utils/anime-quotes"]
+	path = utils/anime-quotes
+	url = https://github.com/mayukobot/anime-quotes.git
