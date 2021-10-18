@@ -5,6 +5,8 @@ const TurndownService = require('turndown');
 const truncate = require('node-truncate');
 const unixTime = require('unix-timestamp-converter')
 
+const animeQuote = require('../utils/anime-quotes')
+
 const turndownService = new TurndownService();
 const Anilist = new anilist();
 
@@ -15,6 +17,9 @@ module.exports = {
         .addStringOption(option => option.setName('title').setDescription("The anime to look up").setRequired(true)),
     async execute(interaction) {
         try {
+
+            const quotePlz = await animeQuote();
+
             const title = interaction.options.getString('title');
             const search = await Anilist.search("anime", title, 1, 5)
             const result = await Anilist.media.anime(search.media[0].id)
@@ -45,7 +50,8 @@ module.exports = {
                     { name: "Episodes",         value: result.episodes.toString(),      inline: false },
                     { name: "Average score",    value: result.averageScore + "/100",    inline: false }
                 )
-                .setFooter("Data provided by anilist.co", "https://raw.githubusercontent.com/mayukobot/mayuko-js/master/assets/pfp.jpg")
+                // .setFooter("Data provided by anilist.co", "https://raw.githubusercontent.com/mayukobot/mayuko-js/master/assets/pfp.jpg")
+                .setFooter(`${quotePlz.quote.truncate(60)} -${quotePlz.character}, ${quotePlz.anime}`, "https://raw.githubusercontent.com/mayukobot/mayuko-js/master/assets/pfp.jpg")
             if(result.nextAiringEpisode != null) {
                     anisearchEmbed.addField("Next airing episode", 
                     unixTime.UNIX_CODE(result.nextAiringEpisode.airingAt) + " - Episode " + result.nextAiringEpisode.episode, 
@@ -54,6 +60,6 @@ module.exports = {
             }
 
             await interaction.reply({embeds: [anisearchEmbed], components: [row] })
-        } catch(e) { throw new Error("Anime not found!"); }
+        } catch(e) { console.log(e); throw new Error("Anime not found!"); }
     }
 }

@@ -6,7 +6,7 @@ General purpose Discord bot for all things anime!
 
 ## Tech Stack
 
-**Bot:** NodeJS, [discord.js](https://discord.js.org), [anilist-node](https://github.com/butterstroke/Anilist-Node), [open-graph-scraper](https://github.com/jshemas/openGraphScraper), [nhentai](https://github.com/DiamondMiner88/nhentai), [turndown](https://github.com/mixmark-io/turndown), [node-truncate](https://github.com/whisk/node-truncate), [unix-timestamp-converter](https://www.npmjs.com/package/unix-timestamp-converter), [node-osu-api](https://www.npmjs.com/package/node-osu-api), [fast-average-color-node](https://github.com/fast-average-color/fast-average-color-node)
+**Bot:** NodeJS, [discord.js](https://discord.js.org), [anilist-node](https://github.com/butterstroke/Anilist-Node), [open-graph-scraper](https://github.com/jshemas/openGraphScraper), [nhentai](https://github.com/DiamondMiner88/nhentai), [turndown](https://github.com/mixmark-io/turndown), [node-truncate](https://github.com/whisk/node-truncate), [unix-timestamp-converter](https://www.npmjs.com/package/unix-timestamp-converter), [node-osu-api](https://www.npmjs.com/package/node-osu-api), [fast-average-color-node](https://github.com/fast-average-color/fast-average-color-node), [anime-quotes](https://github.com/mayukobot/anime-quotes)
 
 
   

@@ -4,6 +4,8 @@ const anilist = require('anilist-node');
 const TurndownService = require('turndown');
 const truncate = require('node-truncate');
 
+const animeQuote = require('../utils/anime-quotes')
+
 const turndownService = new TurndownService();
 const Anilist = new anilist();
 
@@ -14,10 +16,11 @@ module.exports = {
         .addStringOption(option => option.setName('name').setDescription("The character to look up").setRequired(true)),
     async execute(interaction) {
         try {
+            const quotePlz = await animeQuote();
             const name = interaction.options.getString('name');
             const term = await Anilist.searchEntry.character(name, 1, 10)
             const result = await Anilist.people.character(term.characters[0].id)
-            // console.log(result)
+            // console.log(quotePlz.quote)
 
             // const markdown = turndownService.turndown(result.description)
             const row = new MessageActionRow()
@@ -34,11 +37,11 @@ module.exports = {
                 .setDescription(result.description.truncate(200))
                 .setImage(result.image.large)
                 .setURL("https://anilist.co/character/" + result.id)
-                .setFooter("Data provided by anilist.co", "https://raw.githubusercontent.com/mayukobot/mayuko-js/master/assets/pfp.jpg")
+                .setFooter(`${quotePlz.quote.truncate(60)} -${quotePlz.character}, ${quotePlz.anime}`, "https://raw.githubusercontent.com/mayukobot/mayuko-js/master/assets/pfp.jpg")
                 .addFields(
                     { name: "Native name", value: result.name.native, inline: false }
                 )
             return interaction.reply({ embeds: [charsearchEmbed], components: [row] })
-        } catch(e) { throw new Error("Character not found!"); }
+        } catch(e) { console.log(e); throw new Error("Character not found!"); }
     }
 }

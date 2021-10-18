@@ -3,6 +3,10 @@ const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
 const { getAverageColor } = require('fast-average-color-node')
 const { osukey } = require('../config.json');
 const { countryCodeEmoji } = require('country-code-emoji')
+
+const truncate = require('node-truncate')
+const animeQuote = require('../utils/anime-quotes')
+
 const osu = require('node-osu-api');
 
 const osuApi = new osu.Api(osukey)
@@ -27,6 +31,9 @@ module.exports = {
         ),
     async execute(interaction) {
         try {
+
+            const quotePlz = await animeQuote();
+
             const user = interaction.options.getString('user')
             const mode = interaction.options.getInteger('mode')
             const resultUser = await osuApi.getUser({ u: user, m: mode})
@@ -101,7 +108,7 @@ module.exports = {
                     { name: 'S',            value: resultUser.ranks.S.toString(),               inline: true  },
                     { name: 'A',            value: resultUser.ranks.A.toString(),               inline: true  }
                 )
-                .setFooter("Data provided by osu.ppy.sh", "https://raw.githubusercontent.com/mayukobot/mayuko-js/master/assets/pfp.jpg");
+                .setFooter(`${quotePlz.quote.truncate(60)} -${quotePlz.character}, ${quotePlz.anime}`, "https://raw.githubusercontent.com/mayukobot/mayuko-js/master/assets/pfp.jpg")
             return interaction.reply({embeds: [osuEmbed], components: [row]});
         } catch(e) { 
             console.log(e)

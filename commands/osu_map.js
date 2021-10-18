@@ -2,7 +2,9 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
 const osu = require('node-osu-api');
 const { getAverageColor } = require('fast-average-color-node') // This library is SICK
-// const { countryCodeEmoji } = require('country-code-emoji')
+const truncate = require('node-truncate');
+
+const animeQuote = require('../utils/anime-quotes')
 
 const { osukey } = require('../config.json');
 const osuApi = new osu.Api(osukey)
@@ -18,6 +20,9 @@ module.exports = {
             ),
     async execute(interaction) {
         try {
+
+            const quotePlz = await animeQuote();
+            
             const beatmapId = interaction.options.getInteger('beatmapid');
             const resultMap = await osuApi.getBeatmaps({ b: beatmapId })
             const beatmapMapper = await osuApi.getUser({ u: resultMap[0].creator })
@@ -82,7 +87,7 @@ module.exports = {
                     { name: 'BPM',          value: resultMap[0].difficulty.bpm.toString(),  inline: true },
                     // { name: 'Top score',    value: resultMapScore[0].user.username.toString(),  inline: true }
                 )
-                .setFooter("Data provided by osu.ppy.sh", "https://raw.githubusercontent.com/mayukobot/mayuko-js/master/assets/pfp.jpg");
+                .setFooter(`${quotePlz.quote.truncate(60)} -${quotePlz.character}, ${quotePlz.anime}`, "https://raw.githubusercontent.com/mayukobot/mayuko-js/master/assets/pfp.jpg")
             return interaction.reply({embeds: [beatmapEmbed], components: [row]});
             // return interaction.reply("test")
         } catch(e) {
