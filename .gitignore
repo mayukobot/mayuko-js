@@ -2,4 +2,5 @@ config.json
 package-lock.json
 
 node_modules/
-utils/
+utils/wave.js
+utils/test.js
