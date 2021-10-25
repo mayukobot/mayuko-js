@@ -50,8 +50,7 @@ module.exports = {
                     { name: "Episodes",         value: result.episodes.toString(),      inline: false },
                     { name: "Average score",    value: result.averageScore + "/100",    inline: false }
                 )
-                // .setFooter("Data provided by anilist.co", "https://raw.githubusercontent.com/mayukobot/mayuko-js/master/assets/pfp.jpg")
-                .setFooter(`${quotePlz.quote.truncate(60)} -${quotePlz.character}, ${quotePlz.anime}`, "https://raw.githubusercontent.com/mayukobot/mayuko-js/master/assets/pfp.jpg")
+                .setFooter("Data provided by anilist.co", "https://raw.githubusercontent.com/mayukobot/mayuko-js/master/assets/pfp.jpg")
             if(result.nextAiringEpisode != null) {
                     anisearchEmbed.addField("Next airing episode", 
                     unixTime.UNIX_CODE(result.nextAiringEpisode.airingAt) + " - Episode " + result.nextAiringEpisode.episode, 
