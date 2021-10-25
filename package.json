@@ -1,9 +1,10 @@
 {
-  "name": "Mayuko",
+  "name": "mayuko",
   "version": "1.0.0",
   "scripts": {
     "start": "node index.js",
-    "register": "node register.js"
+    "register": "node register.js",
+    "dev": "nodemon index"
   },
   "description": "Discord bot for all thing anime!",
   "main": "index.js",

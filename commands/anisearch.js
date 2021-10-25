@@ -24,7 +24,7 @@ module.exports = {
             const search = await Anilist.search("anime", title, 1, 5)
             const result = await Anilist.media.anime(search.media[0].id)
             // console.log(search.media)
-
+            
             const markdown = turndownService.turndown(result.description)
 
             const row = new MessageActionRow()

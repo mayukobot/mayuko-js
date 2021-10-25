@@ -108,7 +108,7 @@ module.exports = {
                     { name: 'S',            value: resultUser.ranks.S.toString(),               inline: true  },
                     { name: 'A',            value: resultUser.ranks.A.toString(),               inline: true  }
                 )
-                .setFooter(`${quotePlz.quote.truncate(60)} -${quotePlz.character}, ${quotePlz.anime}`, "https://raw.githubusercontent.com/mayukobot/mayuko-js/master/assets/pfp.jpg")
+                .setFooter("Data provided by osu.ppy.sh", "https://raw.githubusercontent.com/mayukobot/mayuko-js/master/assets/pfp.jpg")
             return interaction.reply({embeds: [osuEmbed], components: [row]});
         } catch(e) { 
             console.log(e)

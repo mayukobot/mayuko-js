@@ -87,7 +87,7 @@ module.exports = {
                     { name: 'BPM',          value: resultMap[0].difficulty.bpm.toString(),  inline: true },
                     // { name: 'Top score',    value: resultMapScore[0].user.username.toString(),  inline: true }
                 )
-                .setFooter(`${quotePlz.quote.truncate(60)} -${quotePlz.character}, ${quotePlz.anime}`, "https://raw.githubusercontent.com/mayukobot/mayuko-js/master/assets/pfp.jpg")
+                .setFooter("Data provided by osu.ppy.sh", "https://raw.githubusercontent.com/mayukobot/mayuko-js/master/assets/pfp.jpg")
             return interaction.reply({embeds: [beatmapEmbed], components: [row]});
             // return interaction.reply("test")
         } catch(e) {
