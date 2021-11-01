@@ -57,7 +57,7 @@ Start the bot
   
 ## Authors
 
-- [@DynamicDonkey](https://www.github.com/DynamicDonkey) - Programming
+- [@Avellea](https://www.github.com/Avellea) - Programming
 - [@Davidm44](https://github.com/Davidm44) - Testing
 
   
