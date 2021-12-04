@@ -90,6 +90,7 @@ module.exports = {
                     .setURL(embedUrl)
             );
 
+
             const osuEmbed = new MessageEmbed()
                 // .setColor(avgColor.hex)
                 .setColor(colorString)
