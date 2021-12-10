@@ -32,10 +32,10 @@ module.exports = {
             // console.log(picsData.data.tags[0].images[0])
 
             const picsEmbed = new MessageEmbed()
-                .setColor(picsData.data.tags[0].images[0].dominant_color)
-                .setTitle('Oh my how, lewd...')
-                .setURL(picsData.data.tags[0].images[0].url)
-                .setImage(picsData.data.tags[0].images[0].url)
+                .setColor(picsData.data.images[0].dominant_color)
+                .setTitle('Oh my, how lewd...')
+                .setURL(picsData.data.images[0].source)
+                .setImage(picsData.data.images[0].url)
                 .setFooter("Data provided by waifu.im", "https://raw.githubusercontent.com/mayukobot/mayuko-js/master/assets/pfp.jpg")
 
             return interaction.reply({embeds: [picsEmbed]})
